@@ -654,7 +654,7 @@ def fetch_chart_data(hadm_ids, chart_rawids, excl_chart_abnormal=False):
 def get_med_timeseries(dic, chart_dic, lab_dic, hadm_ids, 
                        chart_rawids, lab_rawids,
                        testmode=False,
-                       use_drug_data=True, use_lab_data=False,
+                       use_drug_data=True, use_lab_data=True,
                        use_proc_data=True, use_chart_data=True,
                        is_lab_by_range=False, 
                        excl_lab_abnormal=False,
@@ -1080,6 +1080,8 @@ def main():
                         default=False)
     parser.add_argument('--excl-chart-abnormal', dest='excl_chart_abnormal', action="store_true",
                         default=False)
+    parser.add_argument('--ignore-lab-data', dest='ignore_lab_data', action="store_true",
+                        default=False)
 
     args = parser.parse_args()
     print('-----------------------')
@@ -1143,6 +1145,7 @@ def main():
                                chart_rawids=chart_event_mimic_ids,
                                lab_rawids=lab_dic.rawid_dic.keys(),
                                testmode=args.testmode,
+                               use_lab_data=not args.ignore_lab_data,
                                use_chart_data=not args.testmode,
                                is_lab_by_range=args.lab_range,
                                excl_lab_abnormal=args.excl_lab_abnormal,
