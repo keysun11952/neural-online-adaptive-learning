@@ -1,10 +1,10 @@
 
 # step1. extract TS
-bash exec_prep_mimic_extract_ts_split10_mimic_item_id.sh
+bash exec_prep_mimic_extract_ts_split10_mimic_item_id.bash
 
 
 # step2. generate sequence
-bash exec_prep_mimic_gen_seq_lab_range_split10_mimicid.sh 24;
+bash exec_prep_mimic_gen_seq_lab_range_split10_mimicid.bash 24;
 
 
 # step3. remap mimic itemid to vec idx (and remove non-overlap items)

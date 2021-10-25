@@ -27,10 +27,10 @@ from DBConnectInfo import DBHOST, DBUSER, DBPASS, DBNAME
 
 
 # Path setup
-base_path = '/basepath/'
+base_path = 'data/'
 data_path = base_path + 'mimic.events/data/'
-dic_path = base_path + './dic/'
-log_path = base_path + './log/'
+dic_path = base_path + 'dic/'
+log_path = base_path + 'log/'
 
 for path in [data_path, dic_path, log_path]:
     os.system('mkdir -p {}'.format(path))
@@ -433,7 +433,7 @@ def fetch_admission(min_span_day, max_span_day):
     cur = db.cursor()
     hadm_id_query = """
     SELECT ICUSTAY_ID, INTIME, OUTTIME, LOS
-    FROM mimiciiiv14.ICUSTAYS
+    FROM ICUSTAYS
     WHERE DBSOURCE = 'metavision' 
         AND LOS BETWEEN {min_span_day} AND {max_span_day}
     ORDER BY ICUSTAY_ID, INTIME
@@ -531,7 +531,7 @@ def fetch_lab_data(hadm_ids):
     cur = db.cursor()
     lab_query = """
     SELECT ICUSTAY_ID, ITEMID, CHARTTIME, FLAG
-    FROM CS3750_Group6.LABEVENTS_MV
+    FROM LABEVENTS
     WHERE ICUSTAY_ID IN ({});
     """.format(hadm_ids)
 
@@ -654,7 +654,7 @@ def fetch_chart_data(hadm_ids, chart_rawids, excl_chart_abnormal=False):
 def get_med_timeseries(dic, chart_dic, lab_dic, hadm_ids, 
                        chart_rawids, lab_rawids,
                        testmode=False,
-                       use_drug_data=True, use_lab_data=True,
+                       use_drug_data=True, use_lab_data=False,
                        use_proc_data=True, use_chart_data=True,
                        is_lab_by_range=False, 
                        excl_lab_abnormal=False,
@@ -1030,7 +1030,7 @@ def save_train_test_valid_subset(medTS, dic, ratio_train, ratio_test,
             \nvalue: number of times that happend in {} set\n{}'.format(
             names[i], counters))
 
-        fname = '{}/count_overlapping_time_points_{}'.format(log_path, names[i])
+        fname = '{}count_overlapping_time_points_{}'.format(log_path, names[i])
         fname = decorate_fname(fname)
         np.save(fname, counters)
 
@@ -1091,7 +1091,7 @@ def main():
     dic_hadm = fetch_admission(args.min_span_day, args.max_span_day)
     hadm_ids = dic_hadm.keys()
 
-    re_map = create_id_remap('{}/mimic_itemid_remap.csv'.format(dic_path), 'ORIGID', 'NEWID')
+    re_map = create_id_remap('{}mimic_itemid_remap.csv'.format(dic_path), 'ORIGID', 'NEWID')
     # NOTE: remap is re-assign certain mimic items as a data preprocessing
     # this merges certain items that can be considered same but exist in different
     # item ids in mimic database. (e.g., items with different volume, units)
