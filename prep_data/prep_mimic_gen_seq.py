@@ -93,7 +93,7 @@ class RNN_Instance_Generator(object):
                  is_lab_range=False,
                  split_id=None,
                  use_mimicid=False,
-                 opt_str="",
+                 opt_str='',
                  excl_lab_abnormal=False,
                  excl_chart_abnormal=False,
                  force_create=False,
@@ -186,7 +186,7 @@ class RNN_Instance_Generator(object):
             self.y_type, multi_step_str, option_str)
 
         if split_id is not None:
-            self.direc_path += '/split_{}/'.format(split_id)
+            self.direc_path += 'split_{}/'.format(split_id)
 
 
         assert y_type != None \
@@ -476,7 +476,7 @@ class RNN_Instance_Generator(object):
                                           item_end_t):
 
                                 if (self.y_type in ['multi_step', 'multi_event']) \
-                                    or (self.y_type == 'single_event' \
+                                    or (self.y_type == 'single_event'
                                         and len(bin_y['events']) == 0
                                     ):
 
@@ -636,7 +636,7 @@ def main():
 
         v2d = np.load(fname).item()
 
-        trg_fname = '{}/vec_idx_2_label_info'.format(args.data_save_path)
+        trg_fname = '{}/data/vec_idx_2_label_info'.format(args.data_save_path)
         trg_fname = decorate_fname(trg_fname, args)
         np.save(trg_fname, v2d)
 
@@ -667,7 +667,7 @@ def main():
         single_seq=args.single_seq,
         random_breakpoint=args.random_breakpoint,
         align_y_seq=args.align_y_seq,
-        re_map_path='{}/dic/re_map.npy'.format(args.base_path),
+        re_map_path='{}/../dic/re_map.npy'.format(args.base_path),
         start_from_midnight=args.start_from_midnight,
         is_lab_range=args.lab_range,
         split_id=args.split_id,
