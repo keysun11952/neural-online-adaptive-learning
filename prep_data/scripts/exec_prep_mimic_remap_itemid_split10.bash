@@ -10,20 +10,20 @@ else
     test_opt=""
 fi
 
-for split_id in "1"; do #   
+for split_id in "1"; do
     python prep_mimic_remap_itemid_split10.py \
         --data-type "mimic" \
         --excl-lab-abnormal \
         --single-seq \
         --align-y-seq \
         --y-type "multi_event" \
-        --base-path "data_path/mimic.sequence/" \
+        --base-path "data/mimic.sequence" \
         --step-size "$1" \
         --window-hr-x "$1" \
         --window-hr-y "$1" \
         --split-id "${split_id}" \
-        --itemdic "data_path/mimic.events/data/itemdic_exclablab_maxsd_20.0_minsd_2.0${test_str}.npy" \
-        --opt-str "_minsd_2_maxsd_20_sv"\
+        --itemdic "data/mimic.events/data/itemdic_maxsd_5.0_minsd_2.0${test_str}.npy" \
+        --opt-str "_minsd_2_maxsd_5_sv" \
         --elapsed-time \
         ${test_opt} \
         --use-mimicid &

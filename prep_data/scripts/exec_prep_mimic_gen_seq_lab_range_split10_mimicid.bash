@@ -30,7 +30,7 @@ for hr in "$1" ; do
                 --elapsed-time \
                 --base-path "data/mimic.events" \
                 --data-save-path "data/mimic.sequence" \
-                --opt-str "_minsd_2_maxsd_20_sv" &
+                --opt-str "_minsd_2_maxsd_5_sv" &
         done
     done
 done

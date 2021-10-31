@@ -15,6 +15,6 @@ python prep_mimic_extract_ts_adhoc.py \
         --max-span-day 5 \
         --min-span-day 2 \
         --skip-valid \
-        ${test_opt}
+        ${test_opt} &
 
 cd -

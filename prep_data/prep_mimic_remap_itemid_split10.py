@@ -347,7 +347,7 @@ def get_data_path(args, set_type):
         args.window_y_hr,
         args.y_type, multi_step_str, option_str)
 
-    direc_path += 'split_{}/'.format(args.split_id)
+    direc_path += 'split_{}'.format(args.split_id)
 
     return direc_path
 
@@ -357,8 +357,8 @@ def load_data(args, set_type):
     
     
     with Timing('Load hadm_x and hadm_y files: {}\n'.format(direc_path)): 
-        hadm_bin_y = cp_load_obj(direc_path + 'hadm_bin_y.npy')
-        hadm_bin_x = cp_load_obj(direc_path + 'hadm_bin_x.npy')
+        hadm_bin_y = cp_load_obj(direc_path + '/hadm_bin_y.npy')
+        hadm_bin_x = cp_load_obj(direc_path + '/hadm_bin_x.npy')
 
     return hadm_bin_x, hadm_bin_y
 
