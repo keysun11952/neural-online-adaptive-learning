@@ -56,6 +56,8 @@ def process(data_path, num_folds, remapped_data=False):
 
         print('x path: {}\ny path:{}'.format(path_x_file, path_y_file))
 
+    print('all done')
+
 
 def main():
     parser = ArgumentParser(description='create cross validation folds')
