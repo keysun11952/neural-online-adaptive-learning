@@ -44,7 +44,7 @@ To train and get the evaluation the models in the paper, run following commands 
 
 ### GRU-POP
 ```
-bash run_sci.bash 24 GRU 1 "--fast-folds 1--hyper-weight-decay 1e-04 --hyper-weight-decay 1e-05 --hyper-weight-decay 1e-06 --hyper-weight-decay 1e-07 --bptt 0 --eval-on-cpu --hidden-dim 512 --multiproc 1 --learning-rate 0.005";
+bash run_sci.bash 24 GRU 1 "--fast-folds 1 --hyper-weight-decay 1e-04 --hyper-weight-decay 1e-05 --hyper-weight-decay 1e-06 --hyper-weight-decay 1e-07 --bptt 0 --eval-on-cpu --hidden-dim 512 --multiproc 1 --learning-rate 0.005";
 ```   
 
 ### RETAIN
@@ -54,7 +54,7 @@ bash run_sci.bash 24 RETAIN 1 "--fast-folds 1 --hyper-weight-decay 1e-04 --hyper
 
 ### CNN
 ```
-bash run_sci.bash 24 CNN 1 "--fast-folds 1--hyper-weight-decay 1e-04 --hyper-weight-decay 1e-05 --hyper-weight-decay 1e-06 --hyper-weight-decay 1e-07 --bptt 0 --eval-on-cpu --hidden-dim 512 --multiproc 1 --learning-rate 0.005";
+bash run_sci.bash 24 CNN 1 "--fast-folds 1 --hyper-weight-decay 1e-04 --hyper-weight-decay 1e-05 --hyper-weight-decay 1e-06 --hyper-weight-decay 1e-07 --bptt 0 --eval-on-cpu --hidden-dim 512 --multiproc 1 --learning-rate 0.005";
 ```  
 
 ### GRU-IN 

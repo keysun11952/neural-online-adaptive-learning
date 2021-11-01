@@ -1,3 +1,5 @@
 
 .idea/
 prep_data/data/
+trained/
+logs/

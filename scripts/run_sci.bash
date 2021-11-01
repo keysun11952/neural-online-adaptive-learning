@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
-# source activate py37torch13v3
 
 cd ../
 
-data_path="/datapath/mimic.sequence/"
-python_path="/afs/cs.pitt.edu/usr0/jel158/anaconda3/envs/py37torch13v3/bin/python"
-base_path="/afs/cs.pitt.edu/usr0/jel158/public/project/ts_dataset/"
-source activate py37torch13v3
+data_path="prep_data/data/mimic.sequence"
+python_path="/home/keysun11952/anaconda3/envs/neural/bin/python"
+base_path="/home/keysun11952/Documents/dataset/"
 
 curriculum="False"
 curriculum_rate="1.005"
@@ -54,10 +52,8 @@ CUDA_VISIBLE_DEVICES=0 "${python_path}" main.py \
     --num-folds "${num_folds}" \
     --remapped-data \
     --use-mimicid \
-    --cuda \
-    --labrange \
-    --pred-normal-labchart \
-    --opt-str "_minsd_2_maxsd_20_sv" \
+    --excl-ablab \
+    --opt-str "_minsd_2_maxsd_5_sv" \
     --force-auroc \
     --prior-from-mimic \
     --code-name "m2x20_predall_v5_hyper" \
@@ -68,7 +64,7 @@ CUDA_VISIBLE_DEVICES=0 "${python_path}" main.py \
     --elapsed-time \
     --force-epoch \
     --target-auprc \
-    $4 \
-    | tee "logs/log_${filename}.txt" "${outdir}/log_${filename}.txt" --ignore-interrupts
+    $4 | tee "logs/log_${filename}.txt" "${outdir}/log_${filename}.txt" \
+    --ignore-interrupts
 
 cd -
