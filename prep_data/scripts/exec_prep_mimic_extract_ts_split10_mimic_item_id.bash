@@ -9,12 +9,13 @@ fi
 cd ../
 
 python prep_mimic_extract_ts_adhoc.py \
+        --excl-lab-abnormal \
         --ignore-lab-data \
         --not-allow-load \
         --multi-split 10 \
-        --max-span-day 5 \
         --min-span-day 2 \
+        --max-span-day 20 \
         --skip-valid \
-        ${test_opt} &
+        ${test_opt}
 
 cd -

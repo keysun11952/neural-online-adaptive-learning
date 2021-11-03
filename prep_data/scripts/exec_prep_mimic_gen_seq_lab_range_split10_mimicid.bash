@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-if [[ $2 = "testmode" ]]; then
+if [[ $3 = "testmode" ]]; then
     test_str="_TEST"
     test_opt="--testmode"
 else
@@ -10,9 +10,9 @@ fi
 
 cd ../
 
-for hr in "$1" ; do 
-    for split_id in "1" ; do
-        for set in "train" "test"; do # "valid" -- Skipped!
+for hr in $1 ; do 
+    for split_id in $2 ; do
+        for set in "train" "test" ; do # "valid" -- Skipped!
             python prep_mimic_gen_seq.py \
                 --single-seq \
                 --align-y-seq \
@@ -20,7 +20,7 @@ for hr in "$1" ; do
                 --window-y ${hr} \
                 --y-type 'multi_event' \
                 --step-size ${hr} \
-                --medts-file medTS_MV_${set}_instances${test_str}_split_${split_id}_maxsd_5.0_minsd_2.0_sv_mimicid.npy \
+                --medts-file medTS_MV_${set}_instances_exclablab${test_str}_split_${split_id}_minsd_2.0_sv_mimicid.npy \
                 --set-type ${set} \
                 --excl-lab-abnormal \
                 --split-id ${split_id} \
@@ -30,7 +30,7 @@ for hr in "$1" ; do
                 --elapsed-time \
                 --base-path "data/mimic.events" \
                 --data-save-path "data/mimic.sequence" \
-                --opt-str "_minsd_2_maxsd_5_sv" &
+                --opt-str "_minsd_2_maxsd_20_sv"
         done
     done
 done
