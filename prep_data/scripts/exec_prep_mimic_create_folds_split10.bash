@@ -15,7 +15,7 @@ for hr in $1 ; do
                 --data-path data/mimic.sequence/mimic_train_xhr_${hr}_yhr_${hr}_ytype_multi_event_exclablab${test_str}_singleseq_mimicid_elapsedt_minsd_2_maxsd_20_sv/split_${split_id} \
                 --num-folds ${num_folds} \
                 --remapped-data
-        done &
+        done
     done
 done
 
