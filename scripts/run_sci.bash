@@ -3,8 +3,8 @@
 cd ../
 
 data_path="prep_data/data/mimic.sequence"
-python_path="/home/keysun11952/anaconda3/envs/neural/bin/python"
-base_path="/home/keysun11952/Documents/dataset/"
+python_path="/afs/cs.pitt.edu/usr0/juw100/anaconda3/envs/neural/bin/python"
+base_path="/afs/cs.pitt.edu/usr0/juw100/private/neural-data/"
 
 curriculum="False"
 curriculum_rate="1.005"
@@ -52,8 +52,9 @@ CUDA_VISIBLE_DEVICES=0 "${python_path}" main.py \
     --num-folds "${num_folds}" \
     --remapped-data \
     --use-mimicid \
+    --cuda \
     --excl-ablab \
-    --opt-str "_minsd_2_maxsd_5_sv" \
+    --opt-str "_minsd_2_maxsd_20_sv" \
     --force-auroc \
     --prior-from-mimic \
     --code-name "m2x20_predall_v5_hyper" \
